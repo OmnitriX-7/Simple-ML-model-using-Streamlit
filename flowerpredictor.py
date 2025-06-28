@@ -9,4 +9,13 @@ def load_data():
     df['species'] = iris.target
     return df, iris.target_names
 
+df, target_name = load_data()
+model = RandomForestClassifier()
+model.fit(df.iloc[:,:-1],df['species'])
+
+st.sidebar.title("Input Features")
+sepal_length = st.sidebar.slider("Sepal length", float(df['sepal length (cm)'].min()), float(df['sepal length (cm)'].max()))
+sepal_width = st.sidebar.slider("Sepal width", float(df['sepal width (cm)'].min()), float(df['sepal width (cm)'].max()))
+petal_length = st.sidebar.slider("Petal length", float(df['petal length (cm)'].min()), float(df['petal length (cm)'].max()))
+petal_width = st.sidebar.slider("Petal width", float(df['petal width (cm)'].min()), float(df['petal width (cm)'].max()))
 
